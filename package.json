@@ -1,0 +1,43 @@
+{
+  "name": "tiny-rendering-engine",
+  "version": "1.0.0",
+  "description": "从零开始实现一个玩具版浏览器渲染引擎",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "rimraf dist && rollup --config rollup.config.ts --configPlugin rollup-plugin-typescript2 --environment NODE_ENV:development --bundleConfigAsCjs ",
+    "build": "rimraf dist && rollup --config rollup.config.ts --configPlugin rollup-plugin-typescript2 --environment NODE_ENV:production --bundleConfigAsCjs",
+    "test": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js -c=jest.config.js --no-cache"
+  },
+  "lint-staged": {
+    "src/**/*.{ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woai3c/tiny-rendering-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/woai3c/tiny-rendering-engine/issues"
+  },
+  "homepage": "https://github.com/woai3c/tiny-rendering-engine#readme",
+  "devDependencies": {
+    "@rollup/plugin-json": "^5.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@types/jest": "^29.2.4",
+    "@types/node": "^18.11.16",
+    "chalk": "^5.2.0",
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb-vue3-ts": "^0.1.6",
+    "husky": "^8.0.2",
+    "jest": "^29.3.1",
+    "lint-staged": "^13.1.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^3.7.5",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.9.4"
+  }
+}
