@@ -97,8 +97,30 @@ describe('HTMLParser test', () => {
         expect(htmlTemplate).toBe(JSON.stringify(html, null, 4))
     })
 
-    // TODO
+    const htmlTemplate3 = `{
+    "tagName": "div",
+    "attributes": {
+        "class": "lightblue test",
+        "id": "div",
+        "data-index": "1"
+    },
+    "children": [
+        {
+            "nodeValue": "test!",
+            "nodeType": 3
+        }
+    ],
+    "nodeType": 1
+}`
+
     test('parse html attributes', () => {
-        
+        const parser = new HTMLParser()
+        const parseResult = JSON.stringify(
+            parser.parse('<div class="lightblue test" id=" div " data-index="1">test!</div>'), 
+            null, 
+            4,
+        )
+
+        expect(htmlTemplate3).toBe(parseResult)
     })
 })

@@ -17,10 +17,13 @@
         console.log(parse('<html><body><div>test!</div><\/body><\/html>'))
         console.log(parse(`
             <html>
-                <body >
-                    <div>test!</div>
+                <body id=" body " data-index="1" >
+                    <div class="lightblue test">test!</div>
                 <\/body>
             <\/html>
+        `))
+        console.log(parse(`
+            <div class="lightblue test" id=" div " data-index="1">test!</div>
         `))
     </script>
 </body>

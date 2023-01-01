@@ -129,7 +129,7 @@ export default class Parser {
         }
 
         this.index++
-        ele.attributes[attr] = value
+        ele.attributes[attr] = value.trim()
         this.sliceHTML()
     }
 
