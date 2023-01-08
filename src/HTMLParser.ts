@@ -1,26 +1,24 @@
 import type { Element } from './dom'
 import { text, element } from './dom'
+import Parser from './Parser'
 
-export default class Parser {
-    private html = ''
-    private index = 0
-    private len = 0
+export default class HTMLParser extends Parser {
     private stack: string[] = []
 
-    parse(html: string) {
-        if (typeof html !== 'string') {
+    parse(rawText: string) {
+        if (typeof rawText !== 'string') {
             throw Error('parameter 0 must be a string')
         }
 
-        this.html = html.trim()
-        this.len = this.html.length
+        this.rawText = rawText.trim()
+        this.len = this.rawText.length
         this.index = 0
         this.stack = []
 
         const root = element('root')
         while (this.index < this.len) {
             this.removeSpaces()
-            if (this.html[this.index].startsWith('<')) {
+            if (this.rawText[this.index].startsWith('<')) {
                 this.index++
                 this.parseElement(root)
             } else {
@@ -43,10 +41,10 @@ export default class Parser {
 
         while (this.index < this.len) {
             this.removeSpaces()
-            if (this.html[this.index].startsWith('<')) {
+            if (this.rawText[this.index].startsWith('<')) {
                 this.index++
                 this.removeSpaces()
-                if (this.html[this.index].startsWith('/')) {
+                if (this.rawText[this.index].startsWith('/')) {
                     this.index++
                     const startTag = this.stack[this.stack.length - 1]
                     const endTag = this.parseTag()
@@ -55,7 +53,7 @@ export default class Parser {
                     }
 
                     this.stack.pop()
-                    while (this.index < this.len && this.html[this.index] !== '>') {
+                    while (this.index < this.len && this.rawText[this.index] !== '>') {
                         this.index++
                     }
 
@@ -77,28 +75,31 @@ export default class Parser {
         this.removeSpaces()
 
         // get tag name
-        while (this.index < this.len && this.html[this.index] !== ' ' && this.html[this.index] !== '>') {
-            tag += this.html[this.index]
+        while (this.index < this.len && this.rawText[this.index] !== ' ' && this.rawText[this.index] !== '>') {
+            tag += this.rawText[this.index]
             this.index++
         }
 
-        this.sliceHTML()
+        this.sliceText()
         return tag
     }
 
     private parseText(parent: Element) {
         let str = ''
-        while (this.index < this.len && !(this.html[this.index] === '<' && /\w|\//.test(this.html[this.index + 1]))) {
-            str += this.html[this.index]
+        while (
+            this.index < this.len 
+            && !(this.rawText[this.index] === '<' && /\w|\//.test(this.rawText[this.index + 1]))
+        ) {
+            str += this.rawText[this.index]
             this.index++
         }
 
-        this.sliceHTML()
+        this.sliceText()
         parent.children.push(text(removeExtraSpaces(str)))
     }
 
     private parseAttrs(ele: Element) {
-        while (this.index < this.len && this.html[this.index] !== '>') {
+        while (this.index < this.len && this.rawText[this.index] !== '>') {
             this.removeSpaces()
             this.parseAttr(ele)
             this.removeSpaces()
@@ -110,44 +111,31 @@ export default class Parser {
     private parseAttr(ele: Element) {
         let attr = ''
         let value = ''
-        while (this.index < this.len && this.html[this.index] !== '=' && this.html[this.index] !== '>') {
-            attr += this.html[this.index++]
+        while (this.index < this.len && this.rawText[this.index] !== '=' && this.rawText[this.index] !== '>') {
+            attr += this.rawText[this.index++]
         }
 
-        this.sliceHTML()
+        this.sliceText()
         attr = attr.trim()
         if (!attr.trim()) return
 
         this.index++
         let startSymbol = ''
-        if (this.html[this.index] === '\'' || this.html[this.index] === '"') {
-            startSymbol = this.html[this.index++]
+        if (this.rawText[this.index] === '\'' || this.rawText[this.index] === '"') {
+            startSymbol = this.rawText[this.index++]
         }
 
-        while (this.index < this.len && this.html[this.index] !== startSymbol) {
-            value += this.html[this.index++]
+        while (this.index < this.len && this.rawText[this.index] !== startSymbol) {
+            value += this.rawText[this.index++]
         }
 
         this.index++
         ele.attributes[attr] = value.trim()
-        this.sliceHTML()
-    }
-
-    private removeSpaces() {
-        while (this.index < this.len && this.html[this.index] === ' ' && this.html[this.index] === '\n') {
-            this.index++
-        }
-
-        this.sliceHTML()
-    }
-
-    private sliceHTML() {
-        this.html = this.html.slice(this.index)
-        this.len = this.html.length
-        this.index = 0
+        this.sliceText()
     }
 }
 
+// a  b  c => a b c 删除字符之间多余的空格，只保留一个
 function removeExtraSpaces(str: string) {
     let index = 0
     let len = str.length
