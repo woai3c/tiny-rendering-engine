@@ -1,5 +1,4 @@
-import HTMLParser from '../src/HTMLParser'
-import { element, text } from '../src/dom'
+import HTMLParser, { element, text } from '../src/HTMLParser'
 
 describe('HTMLParser test', () => {
     const htmlTemplate = `{

@@ -1,5 +1,20 @@
-import type { Declaration, Rule, Selector } from './css'
 import Parser from './Parser'
+
+interface Rule {
+    selectors: Selector[]
+    declarations: Declaration[]
+}
+
+interface Selector {
+    tagName: string
+    id: string
+    class: string[]
+}
+
+interface Declaration {
+    name: string
+    value: string | number
+}
 
 // TODO: 待完成
 export default class CSSParser extends Parser {

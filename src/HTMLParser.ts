@@ -1,6 +1,39 @@
-import type { Element } from './dom'
-import { text, element } from './dom'
 import Parser from './Parser'
+
+enum NodeType {
+    Element = 1,
+    Text = 3
+}
+
+interface Element {
+    tagName: string
+    attributes: Record<string, string>
+    children: Node[]
+    nodeType: NodeType.Element
+}
+
+interface Text {
+    nodeValue: string
+    nodeType: NodeType.Text
+}
+
+type Node = Element | Text
+
+export function element(tagName: string) {
+    return {
+        tagName,
+        attributes: {},
+        children: [],
+        nodeType: NodeType.Element,
+    } as Element
+}
+
+export function text(data: string) {
+    return {
+        nodeValue: data,
+        nodeType: NodeType.Text,
+    } as Text
+}
 
 export default class HTMLParser extends Parser {
     private stack: string[] = []
