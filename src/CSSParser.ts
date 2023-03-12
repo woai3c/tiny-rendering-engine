@@ -56,10 +56,11 @@ export default class CSSParser extends Parser {
 
     private parseSelectors() {
         const selectors: Selector[] = []
+        const symbols = ['*', '.', '#']
         while (this.index < this.len) {
             this.removeSpaces()
             const char = this.rawText[this.index]
-            if (this.identifierRE.test(char) || char === '*') {
+            if (this.identifierRE.test(char) || symbols.includes(char)) {
                 selectors.push(this.parseSelector())
             } else if (char === ',') {
                 this.removeSpaces()
@@ -81,15 +82,18 @@ export default class CSSParser extends Parser {
             class: [],
             tagName: '',
         }
-        
+
         switch (this.rawText[this.index]) {
             case '.':
+                this.index++
                 selector.class.push(this.parseIdentifier()) 
                 break
             case '#':
+                this.index++
                 selector.id = this.parseIdentifier()
                 break
             case '*':
+                this.index++
                 selector.tagName = '*'
                 break
             default:
