@@ -8,7 +8,7 @@ interface Rule {
 interface Selector {
     tagName: string
     id: string
-    class: string[]
+    class: string
 }
 
 interface Declaration {
@@ -16,7 +16,6 @@ interface Declaration {
     value: string | number
 }
 
-// TODO: 待完成
 export default class CSSParser extends Parser {
     private identifierRE = /\w|-|_/
 
@@ -79,14 +78,14 @@ export default class CSSParser extends Parser {
     private parseSelector() {
         const selector: Selector = {
             id: '',
-            class: [],
+            class: '',
             tagName: '',
         }
 
         switch (this.rawText[this.index]) {
             case '.':
                 this.index++
-                selector.class.push(this.parseIdentifier()) 
+                selector.class = this.parseIdentifier()
                 break
             case '#':
                 this.index++
