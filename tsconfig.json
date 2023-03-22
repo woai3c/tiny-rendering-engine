@@ -6,7 +6,8 @@
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
-    "declaration": false,
+    "declaration": true,
+    "declarationDir": "dist",
     "experimentalDecorators": true,
     "strictFunctionTypes": false,
     "skipLibCheck": true,
@@ -27,6 +28,5 @@
   },
   "include": [
     "src/**/*",
-    "rollup.config.ts"
   ],
 }
