@@ -1,5 +1,4 @@
-import HTMLParser from '../src/HTMLParser'
-import { element, text } from '../src/dom'
+import HTMLParser, { element, text } from '../src/HTMLParser'
 
 describe('HTMLParser test', () => {
     const htmlTemplate = `{
@@ -33,38 +32,22 @@ describe('HTMLParser test', () => {
     "attributes": {},
     "children": [
         {
-            "nodeValue": " ",
-            "nodeType": 3
-        },
-        {
             "tagName": "body",
             "attributes": {},
             "children": [
-                {
-                    "nodeValue": " ",
-                    "nodeType": 3
-                },
                 {
                     "tagName": "div",
                     "attributes": {},
                     "children": [
                         {
-                            "nodeValue": "test!",
+                            "nodeValue": "test test!",
                             "nodeType": 3
                         }
                     ],
                     "nodeType": 1
-                },
-                {
-                    "nodeValue": " ",
-                    "nodeType": 3
                 }
             ],
             "nodeType": 1
-        },
-        {
-            "nodeValue": " ",
-            "nodeType": 3
         }
     ],
     "nodeType": 1
@@ -76,7 +59,7 @@ describe('HTMLParser test', () => {
         const parseResult2 = JSON.stringify(parser.parse(`
             <html>
                 <body >
-                    <div>test!</div>
+                    <div>test    test!</div>
                 </body>
             </html>
         `), null, 4)
