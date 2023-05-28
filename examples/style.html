@@ -4,21 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSSParser</title>
+    <title>style</title>
 </head>
 <body>
     <script src="../dist/render-engine.js"></script>
     <script>
-        function parse(css) {
-            const parser = new RenderEngine.CSSParser()
-            return JSON.stringify(parser.parse(css), null, 4)
+        function parseHTML(html) {
+            const parser = new RenderEngine.HTMLParser()
+            return parser.parse(html)
         }
-        
-        console.log(parse(`
-            div,
-            *,
-            .class-div,
-            #id-div {
+
+        function parseCSS(css) {
+            const parser = new RenderEngine.CSSParser()
+            return parser.parse(css)
+        }
+
+        const domTree = parseHTML(`
+            <html>
+                <body id=" body " data-index="1" style="color: red; background: yellow;">
+                    <div class="lightblue test">test!</div>
+                <\/body>
+            <\/html>
+        `)
+
+        const cssRules = parseCSS(`
+            div {
                 font-size: 14px;
                 position: relative;
                 width: 100%;
@@ -27,7 +37,7 @@
                 margin-bottom: 20px;
             }
 
-            div {
+            .lightblue {
                 font-size: 16px;
             }
 
@@ -35,14 +45,9 @@
                 font-size: 88px;
                 color: #000;
             }
-        `))
+        `)
 
-        console.log(parse(`
-            .class-div,
-            .class-div2 {
-                font-size: 14px;
-            }
-        `))
+        console.log(JSON.stringify(RenderEngine.getStyleTree(domTree, cssRules), null, 4))
     </script>
 </body>
 </html>
