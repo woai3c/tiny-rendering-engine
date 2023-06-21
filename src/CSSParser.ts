@@ -1,17 +1,17 @@
 import Parser from './Parser'
 
-interface Rule {
+export interface Rule {
     selectors: Selector[]
     declarations: Declaration[]
 }
 
-interface Selector {
+export interface Selector {
     tagName: string
     id: string
     class: string
 }
 
-interface Declaration {
+export interface Declaration {
     name: string
     value: string | number
 }

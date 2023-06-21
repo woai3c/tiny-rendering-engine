@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HTMLParser</title>
 </head>
 <body>
     <script src="../dist/render-engine.js"></script>
@@ -17,7 +17,7 @@
         console.log(parse('<html><body><div>test!</div><\/body><\/html>'))
         console.log(parse(`
             <html>
-                <body id=" body " data-index="1" >
+                <body id=" body " data-index="1" style="color: red; background: yellow;">
                     <div class="lightblue test">test!</div>
                 <\/body>
             <\/html>
