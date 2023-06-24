@@ -2,7 +2,7 @@ import Parser from './Parser'
 
 export enum NodeType {
     Element = 1,
-    Text = 3
+    Text = 3,
 }
 
 export interface Element {
@@ -120,7 +120,7 @@ export default class HTMLParser extends Parser {
     private parseText(parent: Element) {
         let str = ''
         while (
-            this.index < this.len 
+            this.index < this.len
             && !(this.rawText[this.index] === '<' && /\w|\//.test(this.rawText[this.index + 1]))
         ) {
             str += this.rawText[this.index]
@@ -154,7 +154,7 @@ export default class HTMLParser extends Parser {
 
         this.index++
         let startSymbol = ''
-        if (this.rawText[this.index] === '\'' || this.rawText[this.index] === '"') {
+        if (this.rawText[this.index] === "'" || this.rawText[this.index] === '"') {
             startSymbol = this.rawText[this.index++]
         }
 
