@@ -12,7 +12,7 @@ interface StyleNode {
 const inheritableAttrs = ['color', 'font-size']
 export function getStyleTree(eles: Node | Node[], cssRules: Rule[], parent?: StyleNode) {
     if (Array.isArray(eles)) {
-        return eles.map(ele => getStyleNode(ele, cssRules, parent))
+        return eles.map((ele) => getStyleNode(ele, cssRules, parent))
     }
 
     return getStyleNode(eles, cssRules, parent)
@@ -26,13 +26,13 @@ function getStyleNode(ele: Node, cssRules: Rule[], parent?: StyleNode) {
     }
 
     if (ele.nodeType === NodeType.Element) {
-        styleNode.children = ele.children.map(e => getStyleNode(e, cssRules, styleNode)) as unknown as StyleNode[]
+        styleNode.children = ele.children.map((e) => getStyleNode(e, cssRules, styleNode)) as unknown as StyleNode[]
         // 合并内联样式
         if (ele.attributes.style) {
             styleNode.values = { ...styleNode.values, ...getInlineStyle(ele.attributes.style) }
         }
     }
-    
+
     return styleNode
 }
 
@@ -41,7 +41,7 @@ function getStyleValues(ele: Node, cssRules: Rule[], parent?: StyleNode) {
 
     // 文本节点继承父元素的可继承属性
     if (ele.nodeType === NodeType.Text) return inheritableAttrValue
-    
+
     return cssRules.reduce((result: AnyObject, rule) => {
         if (isMatch(ele as Element, rule.selectors)) {
             result = { ...result, ...cssValueArrToObject(rule.declarations) }
@@ -70,7 +70,9 @@ function getInheritableAttrValues(parent?: StyleNode) {
  * css 选择器是否匹配元素
  */
 function isMatch(ele: Element, selectors: Selector[]) {
-    return selectors.some(selector => {
+    return selectors.some((selector) => {
+        // 通配符
+        if (selector.tagName === '*') return true
         if (selector.tagName === ele.tagName) return true
         if (ele.attributes.id === selector.id) return true
 
