@@ -36,7 +36,9 @@ describe('style tree test', () => {
         ],
         "nodeType": 1
     },
-    "values": {},
+    "values": {
+        "display": "block"
+    },
     "children": [
         {
             "node": {
@@ -64,6 +66,7 @@ describe('style tree test', () => {
                 "nodeType": 1
             },
             "values": {
+                "display": "block",
                 "font-size": "88px",
                 "color": "red",
                 "background": "yellow"
@@ -86,6 +89,7 @@ describe('style tree test', () => {
                     "values": {
                         "font-size": "16px",
                         "color": "#000",
+                        "display": "block",
                         "position": "relative",
                         "width": "100%",
                         "height": "100%",
@@ -123,6 +127,10 @@ describe('style tree test', () => {
         `)
 
         const cssRules = cssParser.parse(`
+            * {
+                display: block;
+            }
+            
             div {
                 font-size: 14px;
                 position: relative;
