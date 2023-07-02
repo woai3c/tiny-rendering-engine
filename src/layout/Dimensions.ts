@@ -1,4 +1,4 @@
-import type Rect from './Rect'
+import Rect from './Rect'
 import type { EdgeSizes } from './type'
 
 export default class Dimensions {
@@ -15,12 +15,7 @@ export default class Dimensions {
             left: 0,
         }
 
-        this.content = {
-            x: 0,
-            y: 0,
-            width: 0,
-            height: 0,
-        } as Rect
+        this.content = new Rect()
 
         this.padding = { ...initValue }
         this.border = { ...initValue }

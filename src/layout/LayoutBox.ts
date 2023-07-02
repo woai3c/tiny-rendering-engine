@@ -30,7 +30,8 @@ export default class LayoutBox {
         const styleValues = this.styleNode?.values || {}
         const parentWidth = parentBlock.content.width
 
-        let width = styleValues.width
+        // 初始值为 auto
+        let width = styleValues.width ?? 'auto'
         let marginLeft = styleValues['margin-left'] || styleValues.margin || 0
         let marginRight = styleValues['margin-right'] || styleValues.margin || 0
 
@@ -92,16 +93,16 @@ export default class LayoutBox {
         }
 
         const dimensions = this.dimensions
-        dimensions.content.width = width
+        dimensions.content.width = parseInt(width)
 
-        dimensions.margin.left = marginLeft
-        dimensions.margin.right = marginRight
+        dimensions.margin.left = parseInt(marginLeft)
+        dimensions.margin.right = parseInt(marginRight)
 
-        dimensions.border.left = borderLeft
-        dimensions.border.right = borderRight
+        dimensions.border.left = parseInt(borderLeft)
+        dimensions.border.right = parseInt(borderRight)
 
-        dimensions.padding.left = paddingLeft
-        dimensions.padding.right = paddingRight
+        dimensions.padding.left = parseInt(paddingLeft)
+        dimensions.padding.right = parseInt(paddingRight)
     }
 
     calculateBlockPosition(parentBlock: Dimensions) {
@@ -131,11 +132,10 @@ export default class LayoutBox {
     }
 
     calculateBlockHeight() {
-        console.log('calculateBlockHeight')
         // 如果元素设置了 height，则使用 height，否则使用 layoutBlockChildren() 计算出来的高度
         const height = this.styleNode?.values.height
         if (height) {
-            this.dimensions.content.height = Number(height)
+            this.dimensions.content.height = parseInt(height)
         }
     }
 }
@@ -146,13 +146,13 @@ function sum(...args: (string | number)[]) {
             return prev
         }
 
-        return prev + Number(cur)
+        return prev + parseInt(String(cur))
     }, 0) as number
 }
 
 function transformValueSafe(val: number | string) {
     if (val === 'auto') return 0
-    return Number(val)
+    return parseInt(String(val))
 }
 
 function getBoxType(styleNode?: StyleNode) {
