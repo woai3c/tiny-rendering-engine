@@ -2,7 +2,12 @@ import type { Declaration, Rule, Selector } from './CSSParser'
 import type { Node, Element } from './HTMLParser'
 import { NodeType } from './HTMLParser'
 
-interface StyleNode {
+export enum Display {
+    Inline = 'inline',
+    Block = 'block',
+    None = 'none',
+}
+export interface StyleNode {
     node: Node // DOM 节点
     values: AnyObject // style 属性值
     children: StyleNode[]
@@ -16,6 +21,10 @@ export function getStyleTree(eles: Node | Node[], cssRules: Rule[], parent?: Sty
     }
 
     return getStyleNode(eles, cssRules, parent)
+}
+
+export function getDisplayValue(styleNode: StyleNode) {
+    return styleNode.values?.display ?? Display.Inline
 }
 
 function getStyleNode(ele: Node, cssRules: Rule[], parent?: StyleNode) {

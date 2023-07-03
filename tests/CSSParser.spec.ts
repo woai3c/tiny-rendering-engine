@@ -23,7 +23,7 @@ describe('CSSParser test', () => {
         ]
     }
 ]`
-    
+
     const classTemplate2 = `[
     {
         "selectors": [
@@ -98,12 +98,16 @@ describe('CSSParser test', () => {
 
     test('parse css class', () => {
         const parser = new CSSParser()
-        const parseResult = JSON.stringify(parser.parse(`
+        const parseResult = JSON.stringify(
+            parser.parse(`
             .class-div,
             .class-div2 {
                 font-size: 14px;
             }
-        `), null, 4)
+        `),
+            null,
+            4
+        )
 
         expect(classTemplate).toBe(parseResult)
     })
@@ -111,7 +115,8 @@ describe('CSSParser test', () => {
     test('parse css all', () => {
         const parser = new CSSParser()
 
-        const parseResult = JSON.stringify(parser.parse(`
+        const parseResult = JSON.stringify(
+            parser.parse(`
                 div,
                 *,
                 .class-div,
@@ -128,7 +133,10 @@ describe('CSSParser test', () => {
                     font-size: 88px;
                     color: #000;
                 }
-            `), null, 4)
+            `),
+            null,
+            4
+        )
 
         expect(classTemplate2).toBe(parseResult)
     })

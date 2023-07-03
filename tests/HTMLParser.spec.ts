@@ -26,7 +26,7 @@ describe('HTMLParser test', () => {
     ],
     "nodeType": 1
 }`
-    
+
     const htmlTemplate2 = `{
     "tagName": "html",
     "attributes": {},
@@ -52,17 +52,21 @@ describe('HTMLParser test', () => {
     ],
     "nodeType": 1
 }`
-    
+
     test('parse html template', () => {
         const parser = new HTMLParser()
         const parseResult = JSON.stringify(parser.parse('<html><body><div>test!</div></body></html>'), null, 4)
-        const parseResult2 = JSON.stringify(parser.parse(`
+        const parseResult2 = JSON.stringify(
+            parser.parse(`
             <html>
                 <body >
                     <div>test    test!</div>
                 </body>
             </html>
-        `), null, 4)
+        `),
+            null,
+            4
+        )
 
         expect(htmlTemplate).toBe(parseResult)
         expect(htmlTemplate2).toBe(parseResult2)
@@ -99,9 +103,9 @@ describe('HTMLParser test', () => {
     test('parse html attributes', () => {
         const parser = new HTMLParser()
         const parseResult = JSON.stringify(
-            parser.parse('<div class="lightblue test" id=" div " data-index="1">test!</div>'), 
-            null, 
-            4,
+            parser.parse('<div class="lightblue test" id=" div " data-index="1">test!</div>'),
+            null,
+            4
         )
 
         expect(htmlTemplate3).toBe(parseResult)

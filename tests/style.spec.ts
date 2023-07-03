@@ -149,7 +149,7 @@ describe('style tree test', () => {
                 color: #000;
             }
         `)
-        
+
         const parseResult = JSON.stringify(getStyleTree(domTree, cssRules), null, 4)
 
         expect(styleTemplate).toBe(parseResult)

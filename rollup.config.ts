@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'development') {
     const watcher = rollup.watch(getOptions())
     console.log('rollup is watching for file change...')
 
-    watcher.on('event', event => {
+    watcher.on('event', (event) => {
         switch (event.code) {
             case 'START':
                 console.log('rollup is rebuilding...')
