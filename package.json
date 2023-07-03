@@ -12,7 +12,7 @@
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "lint-staged": {
-    "src/**/*.{ts}": [
+    "src/**/*.{ts,js}": [
       "eslint --fix",
       "git add"
     ]
