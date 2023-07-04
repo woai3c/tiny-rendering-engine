@@ -1,4 +1,4 @@
 export { default as HTMLParser } from './HTMLParser'
 export { default as CSSParser } from './CSSParser'
 export { getStyleTree } from './style'
-export { layoutTree, Dimensions } from './layout'
+export { getLayoutTree, Dimensions } from './layout'

@@ -2,7 +2,7 @@ import type { StyleNode } from '../src/style'
 import { getStyleTree } from '../src/style'
 import CSSParser from '../src/CSSParser'
 import HTMLParser from '../src/HTMLParser'
-import { layoutTree, Dimensions } from '../src/layout'
+import { getLayoutTree, Dimensions } from '../src/layout'
 
 describe('style tree test', () => {
     test('parse html template', () => {
@@ -50,7 +50,7 @@ describe('style tree test', () => {
         const dimensions = new Dimensions()
         dimensions.content.width = 800
         dimensions.content.height = 600
-        const parseResult = JSON.stringify(layoutTree(getStyleTree(domTree, cssRules) as StyleNode, dimensions))
+        const parseResult = JSON.stringify(getLayoutTree(getStyleTree(domTree, cssRules) as StyleNode, dimensions))
 
         expect(layoutTemplate).toBe(parseResult)
     })

@@ -9,7 +9,7 @@
 <body>
     <script src="../dist/render-engine.js"></script>
     <script>
-        const { HTMLParser, CSSParser, layoutTree, getStyleTree, Dimensions } = RenderEngine
+        const { HTMLParser, CSSParser, getLayoutTree, getStyleTree, Dimensions } = RenderEngine
         function parseHTML(html) {
             const parser = new HTMLParser()
             return parser.parse(html)
@@ -58,7 +58,7 @@
         const dimensions = new Dimensions()
         dimensions.content.width = 800
         dimensions.content.height = 600
-        console.log(layoutTree(getStyleTree(domTree, cssRules), dimensions))
+        console.log(getLayoutTree(getStyleTree(domTree, cssRules), dimensions))
     </script>
 </body>
 </html>

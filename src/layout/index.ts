@@ -5,7 +5,7 @@ import LayoutBox from './LayoutBox'
 
 export { Dimensions }
 
-export function layoutTree(styleNode: StyleNode, parentBlock: Dimensions) {
+export function getLayoutTree(styleNode: StyleNode, parentBlock: Dimensions) {
     parentBlock.content.height = 0
     const root = buildLayoutTree(styleNode)
     root.layout(parentBlock)
