@@ -1,4 +1,5 @@
-import { StyleNode, getStyleTree } from '../src/style'
+import type { StyleNode } from '../src/style'
+import { getStyleTree } from '../src/style'
 import CSSParser from '../src/CSSParser'
 import HTMLParser from '../src/HTMLParser'
 import { layoutTree, Dimensions } from '../src/layout'
@@ -15,8 +16,8 @@ describe('style tree test', () => {
             <html>
                 <body id=" body " data-index="1" style="color: red; background: yellow;">
                     <div class="lightblue test">test!</div>
-                <\/body>
-            <\/html>
+                </body>
+            </html>
         `)
 
         const cssRules = cssParser.parse(`
