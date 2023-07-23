@@ -35,6 +35,7 @@ const cssRules = parseCSS(`
                 background: #fff;
                 margin-bottom: 20px;
                 display: block;
+                background: lightblue;
             }
 
             .lightblue {
