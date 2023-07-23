@@ -26,11 +26,12 @@ function getStyleNode(ele: Node, cssRules: Rule[], parent?: StyleNode) {
     }
 
     if (ele.nodeType === NodeType.Element) {
-        styleNode.children = ele.children.map((e) => getStyleNode(e, cssRules, styleNode)) as unknown as StyleNode[]
         // 合并内联样式
         if (ele.attributes.style) {
             styleNode.values = { ...styleNode.values, ...getInlineStyle(ele.attributes.style) }
         }
+
+        styleNode.children = ele.children.map((e) => getStyleNode(e, cssRules, styleNode)) as unknown as StyleNode[]
     }
 
     return styleNode

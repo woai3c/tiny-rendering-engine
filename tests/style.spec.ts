@@ -88,7 +88,7 @@ describe('style tree test', () => {
                     },
                     "values": {
                         "font-size": "16px",
-                        "color": "#000",
+                        "color": "red",
                         "display": "block",
                         "position": "relative",
                         "width": "100%",
@@ -104,7 +104,7 @@ describe('style tree test', () => {
                             },
                             "values": {
                                 "font-size": "16px",
-                                "color": "#000"
+                                "color": "red"
                             },
                             "children": []
                         }
@@ -149,7 +149,7 @@ describe('style tree test', () => {
                 color: #000;
             }
         `)
-        
+
         const parseResult = JSON.stringify(getStyleTree(domTree, cssRules), null, 4)
 
         expect(styleTemplate).toBe(parseResult)
