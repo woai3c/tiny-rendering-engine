@@ -11,6 +11,9 @@
 * [x] 布局树 - v4 分支
 * [x] 绘制 - v5 分支
 
+## 技术原理文档
+正在编写...
+
 ## 参考资料
 
 * [Let's build a browser engine!](https://limpet.net/mbrubeck/2014/08/08/toy-layout-engine-1.html)
