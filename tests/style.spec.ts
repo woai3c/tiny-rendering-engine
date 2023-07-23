@@ -88,7 +88,7 @@ describe('style tree test', () => {
                     },
                     "values": {
                         "font-size": "16px",
-                        "color": "#000",
+                        "color": "red",
                         "display": "block",
                         "position": "relative",
                         "width": "100%",
@@ -104,7 +104,7 @@ describe('style tree test', () => {
                             },
                             "values": {
                                 "font-size": "16px",
-                                "color": "#000"
+                                "color": "red"
                             },
                             "children": []
                         }
