@@ -2,6 +2,8 @@
 
 从零开始实现一个玩具版浏览器渲染引擎
 
+![](examples/example.png)
+
 ## 功能
 
 * [x] HTML 解析器 - v1 分支
