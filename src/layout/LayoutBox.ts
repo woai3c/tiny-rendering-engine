@@ -17,7 +17,7 @@ export default class LayoutBox {
     }
 
     layout(parentBlock: Dimensions) {
-        if (this.boxType === BoxType.BlockNode) {
+        if (this.boxType !== BoxType.InlineNode) {
             this.calculateBlockWidth(parentBlock)
             this.calculateBlockPosition(parentBlock)
             this.layoutBlockChildren()

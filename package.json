@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/woai3c/tiny-rendering-engine#readme",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.2",
     "@rollup/plugin-json": "^5.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/jest": "^29.2.4",
@@ -41,5 +42,8 @@
     "rollup-plugin-typescript2": "^0.34.1",
     "ts-jest": "^29.0.3",
     "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "canvas": "^2.11.2"
   }
 }
