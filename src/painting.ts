@@ -10,7 +10,7 @@ export default function painting(layoutBox: LayoutBox, outputPath = '') {
     const { x, y, width, height } = layoutBox.dimensions.content
     const canvas = createCanvas(width, height) as Canvas
     const ctx = canvas.getContext('2d')
-    console.log(x, y, width, height)
+
     // 设置默认背景色
     ctx.fillStyle = '#fff'
     ctx.fillRect(x, y, width, height)
