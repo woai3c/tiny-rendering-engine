@@ -58,7 +58,7 @@
         const dimensions = new Dimensions()
         dimensions.content.width = 800
         dimensions.content.height = 600
-        console.log(getLayoutTree(getStyleTree(domTree, cssRules), dimensions))
+        console.log(JSON.stringify(getLayoutTree(getStyleTree(domTree, cssRules), dimensions)))
     </script>
 </body>
 </html>
