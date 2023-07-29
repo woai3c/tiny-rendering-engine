@@ -14,7 +14,14 @@
 * [x] 绘制 - v5 分支
 
 ## 技术原理文档
+
 正在编写...
+
+## 疑难问题
+
+### 安装 canvas 报错
+
+请参考 canvas 安装指引文档：<https://github.com/Automattic/node-canvas/wiki>
 
 ## 参考资料
 
