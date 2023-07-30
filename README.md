@@ -23,6 +23,27 @@
 
 请参考 canvas 安装指引文档：<https://github.com/Automattic/node-canvas/wiki>
 
+## 开发
+安装依赖
+```sh
+pnpm i
+```
+开发
+```
+pnpm dev
+```
+构建
+```
+pnpm build
+```
+测试
+```
+pnpm test
+```
+
+## 示例
+所有示例均在 examples 目录下，查看示例前需要先执行构建命令 `pnpm build`。
+
 ## 参考资料
 
 * [Let's build a browser engine!](https://limpet.net/mbrubeck/2014/08/08/toy-layout-engine-1.html)
