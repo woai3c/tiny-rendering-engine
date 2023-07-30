@@ -45,7 +45,7 @@ pnpm test
 所有示例均在 examples 目录下，查看示例前需要先执行构建命令 `pnpm build`。
 
 ## 参考资料
-
 * [Let's build a browser engine!](https://limpet.net/mbrubeck/2014/08/08/toy-layout-engine-1.html)
+* [robinson](https://github.com/mbrubeck/robinson)
 * [渲染页面：浏览器的工作原理](https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work)
 * [关键渲染路径](https://developer.mozilla.org/zh-CN/docs/Web/Performance/Critical_rendering_path)
