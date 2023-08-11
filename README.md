@@ -48,3 +48,4 @@ pnpm test
 * [robinson](https://github.com/mbrubeck/robinson)
 * [渲染页面：浏览器的工作原理](https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work)
 * [关键渲染路径](https://developer.mozilla.org/zh-CN/docs/Web/Performance/Critical_rendering_path)
+* [计算机系统要素](https://book.douban.com/subject/1998341/)
