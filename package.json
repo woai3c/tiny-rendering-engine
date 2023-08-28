@@ -10,9 +10,9 @@
     "dev": "rimraf dist && rollup --config rollup.config.ts --configPlugin typescript --environment NODE_ENV:development",
     "build": "rimraf dist && rollup --config rollup.config.ts --configPlugin typescript && npm run type-generate",
     "type-generate": "tsc -p ./tsconfig.build.json && api-extractor run --config=./api-extractor.json && rimraf temp && node scripts/copyDTS.mjs",
-    "type": "tsc -p ./tsconfig.build.json",
     "test": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js -c=jest.config.js --no-cache",
-    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "type-check": "tsc --noEmit"
   },
   "lint-staged": {
     "src/**/*.{ts,js}": [
