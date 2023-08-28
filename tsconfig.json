@@ -6,8 +6,6 @@
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
-    "declaration": true,
-    "declarationDir": "dist",
     "experimentalDecorators": true,
     "strictFunctionTypes": false,
     "skipLibCheck": true,
@@ -15,7 +13,7 @@
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "baseUrl": ".",
     "allowJs": false,
     "resolveJsonModule": true,
@@ -24,9 +22,11 @@
     "types": [
       "node",
     ],
-    "typeRoots": ["./node_modules/@types/"]
+    "typeRoots": ["./node_modules/@types/", "./types/"]
   },
   "include": [
     "src/**/*",
+    "./rollup.config.ts",
+    "types/**/*"
   ],
 }

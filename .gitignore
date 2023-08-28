@@ -2,3 +2,6 @@ output.png
 output.pdf
 node_modules
 dist
+tsconfig.tsbuildinfo
+tsconfig.build.tsbuildinfo
+.rollup.cache

@@ -1,16 +1,13 @@
 import json from '@rollup/plugin-json'
 import resolve from '@rollup/plugin-node-resolve'
-import typescript from 'rollup-plugin-typescript2'
-import rollup from 'rollup'
+import typescript from '@rollup/plugin-typescript'
+import type { OutputOptions, RollupWatchOptions } from 'rollup'
+import { watch } from 'rollup'
 
-function getOptions() {
+function getOptions(output: OutputOptions | OutputOptions[]) {
     return {
         input: 'src/index.ts',
-        output: {
-            file: 'dist/render-engine.js',
-            format: 'umd',
-            name: 'RenderEngine',
-        },
+        output,
         plugins: [
             resolve({
                 browser: true,
@@ -20,11 +17,11 @@ function getOptions() {
                 compact: true,
             }),
         ],
-    } as rollup.RollupWatchOptions
+    } as RollupWatchOptions
 }
 
 if (process.env.NODE_ENV === 'development') {
-    const watcher = rollup.watch(getOptions())
+    const watcher = watch(getOptions(getOutput('umd')))
     console.log('rollup is watching for file change...')
 
     watcher.on('event', (event) => {
@@ -41,22 +38,14 @@ if (process.env.NODE_ENV === 'development') {
     })
 }
 
-export default {
-    input: 'src/index.ts',
-    output: {
-        file: 'dist/render-engine.js',
-        format: 'umd',
+const formats = ['es', 'umd']
+
+function getOutput(format: 'es' | 'umd') {
+    return {
+        format,
+        file: `dist/render-engine.${format === 'es' ? 'mjs' : 'js'}`,
         name: 'RenderEngine',
-    },
-    plugins: [
-        resolve({
-            browser: true,
-        }),
-        typescript({
-            check: false,
-        }),
-        json({
-            compact: true,
-        }),
-    ],
+    }
 }
+
+export default getOptions(formats.map(getOutput))
