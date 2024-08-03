@@ -21,12 +21,8 @@
     "resolveJsonModule": true,
     "lib": ["dom", "esnext"],
     "incremental": true,
-    "types": [
-      "node",
-    ],
+    "types": ["node", "jest"],
     "typeRoots": ["./node_modules/@types/"]
   },
-  "include": [
-    "src/**/*",
-  ],
+  "include": ["src/**/*"]
 }
