@@ -134,7 +134,7 @@ export default class Parser {
     }
 
     private removeSpaces() {
-        while (this.index < this.len && this.html[this.index] === ' ' && this.html[this.index] === '\n') {
+        while (this.index < this.len && (this.html[this.index] === ' ' || this.html[this.index] === '\n')) {
             this.index++
         }
 

@@ -33,17 +33,9 @@ describe('HTMLParser test', () => {
     "attributes": {},
     "children": [
         {
-            "nodeValue": " ",
-            "nodeType": 3
-        },
-        {
             "tagName": "body",
             "attributes": {},
             "children": [
-                {
-                    "nodeValue": " ",
-                    "nodeType": 3
-                },
                 {
                     "tagName": "div",
                     "attributes": {},
@@ -54,17 +46,9 @@ describe('HTMLParser test', () => {
                         }
                     ],
                     "nodeType": 1
-                },
-                {
-                    "nodeValue": " ",
-                    "nodeType": 3
                 }
             ],
             "nodeType": 1
-        },
-        {
-            "nodeValue": " ",
-            "nodeType": 3
         }
     ],
     "nodeType": 1
